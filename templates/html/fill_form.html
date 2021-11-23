@@ -1,0 +1,20 @@
+{% extends "dashboard-template.html" %}
+{% block title %}Fill Form{% endblock %}
+{% block header %}Fill Form{% endblock %}
+{% block content %}
+<h2>Resume of tout Electrical Trip </br></br></h2>
+<p>Your Car: <strong>{{car_name}}</strong></br></p>
+<p>Your autonomie: <strong>{{autonomie}} km</strong></br></p>
+<p>Your departure address: <strong>{{departure_address}}</strong></br></p>
+<p>Your arrival address: <strong>{{arrival_address}}</strong></br>
+<p>Your number of stop: <strong>{{nbr_stop}}</strong></br>
+<p>Your stop: 
+<ul>
+	{% for stop in address_bornes_stop %}
+	<strong><li>{{stop}}</strong></br></li><p>
+	{% endfor %}
+</ul></br>
+
+<p> Total Time of the Trip: <strong>{{total_trip_time}} minutes</strong></br></p>  
+
+{% endblock %}
