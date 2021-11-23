@@ -1,0 +1,25 @@
+{% extends "dashboard-template.html" %}
+{% block title %}Plan Your Trip{% endblock %}
+{% block header %}Plan Your Trip{% endblock %}
+{% block content %}
+<p>Organise your electrical raod trip and fill the information that sweet you. </br></br><p>
+
+<form action="/fill_form" method='POST'>
+	<label>Choose a car:</label>
+		<select name="car_name">
+			<option>--Please choose an option--</option>
+			{% for car in cars %}
+			<option name="car_name">{{ car['node']['name'] }} </option>		
+			{% endfor %}
+		</select>
+	</br>
+	<label>Inform a departure address:</label>
+		<input type="text" id="departure" name="departure" required minlength="1" maxlength="80" size="60">
+	</br>
+	<label>Inform an arrival address:</label>
+		<input type="text" id="arrival" name="arrival" required minlength="1" maxlength="80" size="60">
+	</br> 
+	<input type="submit" value="Trace the trip">
+</form>
+
+{% endblock %}

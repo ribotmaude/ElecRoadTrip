@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/dashboard.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+        <div class="wrapper">
+            <div class="sidebar">
+                <h2>ERT</h2>
+                <ul>
+                    <li><a href="home"><i class="fas fa-home"></i>Home</a></li>
+                    <li><a href="planyourtrip"><i class="fas fa-tachometer-alt"></i>Plan Your Trip</a></li>
+                    <li><a href="ourcars"><i class="fas fa-address-book"></i>Our Cars</a></li>
+                    <li><a href="about"><i class="fas fa-address-card"></i>About</a></li>
+                </ul>
+            </div>
+            <div class="main_content">
+                <div class="header"><h1>{% block header %}{% endblock %}</h1></div>  
+                <div class="info">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>

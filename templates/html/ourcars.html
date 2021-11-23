@@ -1,0 +1,18 @@
+{% extends "dashboard-template.html" %}
+{% block title %}Our Cars{% endblock %}
+{% block header %}Our Cars{% endblock %}
+{% block content %}
+
+<p>List of cars that Elec Road Trip:</br></br></p>
+
+<table>
+    <tr>
+    <td> Nom </td><td> Marque </td><td> Autonomie </td><td> Temps de Chargement </td>
+    </tr>
+	{% for car in cars %}
+    <tr>
+    <td> {{ car['node']['name'] }} </td><td>{{ car['node']['marque'] }}</td><td>{{ car['node']['autonomie'] }}</td><td>{{ car['node']['tempsChargement'] }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
