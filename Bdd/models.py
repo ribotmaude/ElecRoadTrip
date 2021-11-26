@@ -2,7 +2,7 @@
 """
 Created on Thu Oct  7 08:29:43 2021
 
-@author: raffelet
+@author: mribot
 """
 
 # flask_sqlalchemy/models.py

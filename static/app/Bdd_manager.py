@@ -15,6 +15,8 @@ class Bdd_manager():
 # =============================================================================
 # FONCTIONS
 # =============================================================================
+     
+    #Récupère le reslutat de la base de données 
      def bdd_launcher(self):
          bdd_result = self.query.get_bdd()
          return bdd_result

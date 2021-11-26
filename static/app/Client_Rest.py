@@ -16,7 +16,7 @@ import ast
 import haversine as hs
 
 
-class Server_Rest():
+class Client_Rest():
     
 # =============================================================================
 #     CONSTRUCTEUR
@@ -31,7 +31,7 @@ class Server_Rest():
     def get_coordinates(self,adr):
         #Récupération de coordonnées par rapport à une adresse
     
-        #appel de l'API
+        #ppel de l'API
         api_url = "https://api-adresse.data.gouv.fr/search/?q="
         adr = adr
         r = requests.get(api_url + urllib.parse.quote(adr))
@@ -41,6 +41,9 @@ class Server_Rest():
         coordinates = dico_data['features'][0]['geometry']['coordinates']
         longitude = coordinates[0]
         latuditude = coordinates[1]
+        
+        #Logs
+        print (f"The function get_coordinates of server_rest was called : {latuditude,longitude}")
         
         return(latuditude,longitude)
     
@@ -53,10 +56,19 @@ class Server_Rest():
         response = requests.get(api_url)
         response= response.json()
         
-        #Parsing des coordonnées 
-        address = response['features'][0]['properties']['label']
+        try: 
+            #Parsing des coordonnées 
+            address = response['features'][0]['properties']['label']
+            
+            #Logs
+            print (f"The function get_address of server_rest was called : {address}")
         
-        return address
+            return address
+        
+        except: 
+            print (f"The api has not found an address or the borne: {latitude,longitude}")
+        
+        
         
         
     def get_distance(self,distance1,distance2):
@@ -67,12 +79,18 @@ class Server_Rest():
         #Récupèration la distance en km
         total_distance = ceil(hs.haversine(loc1,loc2)) 
         
+        #Logs
+        print (f"The function get_distance of server_rest was called : {total_distance}")
+        
         return (total_distance)
         
     def get_nbr_stop(self,total_distance,autonomie):
         
         #Calcul en combien le trajet dois etre divisé avec l'autonomie de la voiture
         slot_distance = ceil(total_distance/ (autonomie -20))
+        
+        #Logs
+        print (f"The function get_nbr_stop of server_rest was called : { slot_distance}")
         
         return slot_distance
     
@@ -112,6 +130,9 @@ class Server_Rest():
              
             #Ajout des point trouvé à la liste
             list_autonomie.append(end_automonie_cordinates)
+            
+        #Logs
+        print (f"The function get_coordinates_end_auto of server_rest was called : {list_autonomie}")
       
         return(list_autonomie)
     
@@ -144,6 +165,9 @@ class Server_Rest():
                 longitude = format(response['records'][0]['fields']['xlongitude'],'.6f')
             
                 list_bornes.append([latitude,longitude])
+                
+        #Logs
+        print (f"The function get_bornes of server_rest was called : {list_bornes}")
             
         return list_bornes
 

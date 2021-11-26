@@ -6,7 +6,7 @@
 
 <form action="/fill_form" method='POST'>
 	<label>Choose a car:</label>
-		<select name="car_name">
+		<select required name="car_name">
 			<option>--Please choose an option--</option>
 			{% for car in cars %}
 			<option name="car_name">{{ car['node']['name'] }} </option>		

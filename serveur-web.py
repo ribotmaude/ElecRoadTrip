@@ -10,9 +10,8 @@ Created on Tue Nov  9 22:47:58 2021
 
 from flask import Flask, render_template, request, redirect
 import sys
-sys.path.append("Bdd/")
-sys.path.append("REST/")
-sys.path.append("SOAP/")
+sys.path.append("static/app")
+
 from Bdd_manager import Bdd_manager
 from Rest_manager import Rest_manager
 from Soap_manager import Soap_manager
